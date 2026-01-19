@@ -1,0 +1,12 @@
+.h5p-label-exercise-background {
+  grid-area: 1 / 1 / 1 / 1;
+
+  & .h5p-label-exercise-background-image {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.display-none {
+    display: none;
+  }
+}

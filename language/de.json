@@ -1,0 +1,235 @@
+{
+  "semantics": [
+    {
+      "label": "Aufgabenbeschreibung",
+      "default": "Beschrifte das Bild."
+    },
+    {
+      "label": "Label-Editor-Einstellungen",
+      "fields": [
+        {
+          "label": "Beschriftungen",
+          "entity": "Beschriftung",
+          "field": {
+            "label": "Beschriftung",
+            "fields": [
+              {
+                "label": "Lösungen",
+                "description": "Gib die richtige(n) Lösung(en) für diese Beschriftung ein. Du kannst mehrere Lösungen eingeben, getrennt durch einen Schrägstrich (/). Wenn deine Lösung einen Schrägstrich enthalten soll, stelle ihm einen Backslash (\\/) voran."
+              },
+              {
+                "label": "Hinweis",
+                "description": "Gib optional einen Hinweis für diese Beschriftung ein, den Nutzenden hilft, die richtige Antwort zu finden."
+              },
+              {
+                "label": "Ankerposition des Hotspots",
+                "description": "Wähle für kleine Bildschirme die Position des Hotspots in Bezug auf das Eingabefeld.",
+                "options": [
+                  {
+                    "label": "Links"
+                  },
+                  {
+                    "label": "Rechts"
+                  }
+                ]
+              },
+              {
+                "label": "Telemetrie"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Hintergrundbild",
+      "description": "Wähle das Bild aus, das als Hintergrund verwendet werden soll."
+    },
+{
+      "label": "Gesamtrückmeldung",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Voreinstellung"
+            }
+          ],
+          "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
+          "description": "Klicke auf den \"Bereich hinzufügen\"-Button, um so viele Bereiche hinzuzufügen, wie du brauchst. Beispiel: 0-20% Schlechte Punktzahl, 21-91% Durchschnittliche Punktzahl, 91-100% Großartige Punktzahl!",
+          "entity": "Bereich",
+          "field": {
+            "fields": [
+              {
+                "label": "Punktebereich"
+              },
+              {},
+              {
+                "label": "Rückmeldung für jeweiligen Punktebereich",
+                "placeholder": "Trage die Rückmeldung ein"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+          "label": "Hotspot-Anzeigemodus",
+          "description": "Auf kleinen Bildschirmen werden Eingabefelder nicht direkt auf dem Bild angezeigt, sondern in Popups, die über Hotspots ausgelöst werden. Du kannst den Inhaltstyp je nach Bildschirmgröße entscheiden lassen oder immer Hotspots verwenden.",
+          "options": [
+            {
+              "label": "Inhaltstyp entscheiden lassen"
+            },
+            {
+              "label": "Immer Hotspots verwenden"
+            }
+          ]
+        },
+        {
+          "label": "\"Lösung anzeigen\" ermöglichen"
+        },
+        {
+          "label": "\"Wiederholen\" zulassen"
+        }
+      ]
+    },
+    {
+      "label": "Bedienoberfläche",
+      "fields": [
+        {
+          "label": "Beschriftung des \"Überprüfen\"-Buttons",
+          "default": "Überprüfen"
+        },
+        {
+          "label": "Beschriftung des \"Absenden\"-Buttons",
+          "default": "Absenden"
+        },
+        {
+          "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
+          "default": "Lösung anzeigen"
+        },
+        {
+          "label": "Beschriftung des \"Wiederholen\"-Buttons",
+          "default": "Wiederholen"
+        },
+        {
+          "label": "Beschriftung X von Y",
+          "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt.",
+          "default": "Beschriftung @current von @total"
+        },
+        {
+          "label": "Überschrift Ergebnisansicht",
+          "default": "Deine Ergebnisse"
+        },
+        {
+          "label": "Überschrift für Punktzahl in Ergebnisansicht",
+          "description": "@score und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt.",
+          "default": "@score von @total richtig"
+        },
+        {
+          "label": "Beschriftung",
+          "default": "Beschriftung"
+        },
+        {
+          "label": "Beschriftungen",
+          "default": "Beschriftungen"
+        },
+        {
+          "label": "Punktzahl",
+          "default": "Punktzahl"
+        },
+        {
+          "label": "Vorlage richtige Antwort (Singular)",
+          "default": "Lösung: "
+        },
+        {
+          "label": "Vorlage richtige Antworten (Plural)",
+          "default": "Lösungen: "
+        }
+      ]
+    },
+    {
+      "label": "Texte für Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Beschreibung für Button „Überprüfen“",
+          "default": "Prüfe die Antworten. Die Eingaben werden als richtig, falsch oder unbeantwortet markiert."
+        },
+        {
+          "label": "Beschreibung für Button „Lösung anzeigen“",
+          "default": "Zeige die Lösung. Die Aufgabe wird mit der richtigen Lösung markiert."
+        },
+        {
+          "label": "Beschreibung für Button „Wiederholen“",
+          "default": "Versuche die Aufgabe erneut. Setze alle Antworten zurück und starte die Aufgabe noch einmal."
+        },
+        {
+          "label": "Dein Ergebnis",
+          "description": "@score wird durch die Anzahl der Punkte ersetzt. @total wird durch die maximal möglichen Punkte ersetzt.",
+          "default": "Du hast @score von @total Punkten erreicht."
+        },
+        {
+          "label": "Vollbildmodus starten",
+          "default": "In den Vollbildmodus wechseln"
+        },
+        {
+          "label": "Vollbildmodus verlassen",
+          "default": "Vollbildmodus verlassen"
+        },
+        {
+          "label": "Hinweis anzeigen",
+          "description": "@current ist ein Platzhalter und wird durch den jeweiligen Wert ersetzt.",
+          "default": "Hinweis für Beschriftung @current anzeigen"
+        },
+        {
+          "label": "Hinweis ausblenden",
+          "default": "Hinweis ausblenden"
+        },
+        {
+          "label": "Schließen",
+          "default": "Schließen"
+        },
+        {
+          "label": "Beschriftungseingabe X von Y",
+          "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt.",
+          "default": "Beschriftungseingabe @current von @total."
+        },
+        {
+          "label": "Hotspot X von Y",
+          "description": "@current und @total sind Platzhalter und werden durch die jeweiligen Werte ersetzt.",
+          "default": "Hotspot @current von @total. Drücke die Eingabetaste, um das Eingabefeld zu öffnen."
+        },
+        {
+          "label": "Richtig beantwortet",
+          "default": "Richtig beantwortet."
+        },
+        {
+          "label": "Falsch beantwortet",
+          "default": "Falsch beantwortet."
+        },
+        {
+          "label": "Richtige Antwort",
+          "description": "@solution ist ein Platzhalter und wird durch den jeweiligen Wert ersetzt.",
+          "default": "Richtige Antwort: @solution"
+        },
+        {
+          "label": "Ergebnisansicht angezeigt",
+          "default": "Ergebnisansicht wird jetzt angezeigt."
+        },
+        {
+          "label": "Ergebnisansicht verborgen",
+          "default": "Ergebnisansicht ist jetzt verborgen."
+        },
+        {
+          "label": "Anweisung zum Ausfüllen der Beschriftungen",
+          "default": "Fülle die Beschriftungen auf dem Bild aus."
+        }
+      ]
+    }
+  ]
+}

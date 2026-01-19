@@ -1,0 +1,56 @@
+.h5p-label-exercise-hotspot-list-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & .h5p-label-exercise-hotspot {
+    --height: calc(var(--h5p-theme-font-size-m, 1rem) + 2 * var(--h5p-theme-spacing-xs, 0.65rem));
+    --width: var(--height);
+
+    border-radius: 50%;
+    background-color: var(--h5p-theme-main-cta-base, #006FBF);
+    border: calc(0.5 * var(--h5p-theme-spacing-xxs, 0.5rem)) solid var(--h5p-theme-contrast-cta, #EBF7FF);
+    box-sizing: border-box;
+    cursor: pointer;
+    height: var(--height);
+    left: var(--left);
+    padding: 0;
+    position: absolute;
+    top: var(--top);
+    transition: transform .2s ease-in-out;
+    width: var(--width);
+
+    &.left {
+      left: var(--left);
+    }
+
+    &.right {
+      left: calc(var(--left) + var(--label-width) - var(--width));
+    }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+
+    &:focus-visible {
+      outline: 2px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
+      outline-offset: 2px;
+      transform: scale(1.5);
+    }
+
+    &::before {
+      color: var(--h5p-theme-contrast-cta, #EBF7FF);
+      content: "\f067";
+      font-family: "H5PFontAwesome4", sans-serif;
+      font-size: var(--h5p-theme-font-size-xl, 1.25rem);
+      left: 50%;
+      position: absolute;
+      top: calc(50% + 1px); /* Character is not centered in FontAwesome4 */
+      transform: translate(-50%, -50%);
+    }
+
+    &.display-none {
+      display: none;
+    }
+  }
+}

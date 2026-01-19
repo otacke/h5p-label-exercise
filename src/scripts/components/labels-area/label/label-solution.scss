@@ -1,0 +1,28 @@
+.h5p-label-exercise-solution {
+  background-color: var(--h5p-theme-feedback-correct-secondary, #f3fcf0);
+  border: 2px var(--h5p-theme-feedback-correct-main, #256D1D) dashed;
+  border-radius: var(--h5p-theme-border-radius-medium, 0.375rem);
+  box-sizing: border-box;
+  color: var(--h5p-theme-feedback-correct-main, #256D1D);
+  display: inline-block;
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  padding: calc(var(--h5p-theme-spacing-xs, 0.65rem) / 2);
+  position: absolute;
+  right: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &.bottom {
+    top: calc(100% + 2px);
+  }
+
+  &.top {
+    bottom: calc(100% + 2px);
+  }
+
+  &.display-none {
+    display: none;
+  }
+}

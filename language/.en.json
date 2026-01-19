@@ -1,0 +1,235 @@
+{
+  "semantics": [
+    {
+      "label": "Task description",
+      "default": "Fill in the labels on the image."
+    },
+    {
+      "label": "Label editor settings",
+      "fields": [
+        {
+          "label": "Labels",
+          "entity": "label",
+          "field": {
+            "label": "Label",
+            "fields": [
+              {
+                "label": "Solutions",
+                "description": "Enter the correct solution(s) for this label. You can enter multiple solutions separated by a forward slash(/). If your solution is supposed to contain a forward slash, prepend it with a backslash (\\/)."
+              },
+              {
+                "label": "Hint",
+                "description": "Optionally, enter a hint for this label to assist the user with finding the correct answer."
+              },
+              {
+                "label": "Hotspot anchor position",
+                "description": "Select the position of the hotspot for small screens in relation to the input field.",
+                "options": [
+                  {
+                    "label": "Left"
+                  },
+                  {
+                    "label": "Right"
+                  }
+                ]
+              },
+              {
+                "label": "Telemetry"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Dummy"
+        }
+      ]
+    },
+    {
+      "label": "Background image",
+      "description": "Select the image to be used as background."
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Hotspot display mode",
+          "description": "On small screens, input fields will not be shown on the image directly but in popups that are triggered by hotspots. You can choose to let the content type decide based on the screen size or always use hotspots.",
+          "options": [
+            {
+              "label": "Let content type choose"
+            },
+            {
+              "label": "Always use hotspots"
+            }
+          ]
+        },
+        {
+          "label": "Enable \"Show Solution\" button"
+        },
+        {
+          "label": "Enable \"Retry\" button"
+        }
+      ]
+    },
+    {
+      "label": "User interface",
+      "fields": [
+        {
+          "label": "\"Check\" button label",
+          "default": "Check"
+        },
+        {
+          "label": "\"Submit\" button label",
+          "default": "Submit"
+        },
+        {
+          "label": "\"Show solution\" button label",
+          "default": "Show solution"
+        },
+        {
+          "label": "\"Retry\" button label",
+          "default": "Retry"
+        },
+        {
+          "label": "Label X of Y",
+          "description": "@current and @total are placeholders and will be replaced by the respective values.",
+          "default": "Label @current of @total"
+        },
+        {
+          "label": "Result screen header",
+          "default": "Your results"
+        },
+        {
+          "label": "Result screen score header",
+          "description": "@score and @total are placeholders and will be replaced by the respective values.",
+          "default": "@score of @total correct"
+        },
+        {
+          "label": "Label",
+          "default": "Label"
+        },
+        {
+          "label": "Labels",
+          "default": "Labels"
+        },
+        {
+          "label": "Score",
+          "default": "Score"
+        },
+        {
+          "label": "Correct answer template (singular)",
+          "default": "Solution: "
+        },
+        {
+          "label": "Correct answer template (plural)",
+          "default": "Solutions: "
+        }
+      ]
+    },
+    {
+      "label": "Accessibility texts",
+      "fields": [
+        {
+          "label": "Assistive technology description for \"Check\" button",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
+          "label": "Assistive technology description for \"Show solution\" button",
+          "default": "Show the solution. The task will be marked with its correct solution."
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        },
+        {
+          "label": "Your result",
+          "description": "@score will be replaced by the number of points. @total will be replaced by the maximum possible points.",
+          "default": "You got @score out of @total points"
+        },
+        {
+          "label": "Enter fullscreen",
+          "default": "Enter fullscreen mode"
+        },
+        {
+          "label": "Exit fullscreen",
+          "default": "Exit fullscreen mode"
+        },
+        {
+          "label": "Show hint",
+          "description": "@current is a placeholder and will be replaced by the respective value.",
+          "default": "Show hint for label @current"
+        },
+        {
+          "label": "Hide hint",
+          "default": "Hide hint"
+        },
+        {
+          "label": "Close",
+          "default": "Close"
+        },
+        {
+          "label": "Label input X of Y",
+          "description": "@current and @total are placeholders and will be replaced by the respective values.",
+          "default": "Label input @current of @total."
+        },
+        {
+          "label": "Hotspot X of Y",
+          "description": "@current and @total are placeholders and will be replaced by the respective values.",
+          "default": "Hotspot @current of @total. Press Enter to open to edit input field."
+        },
+        {
+          "label": "Answered correctly",
+          "default": "Answered correctly."
+        },
+        {
+          "label": "Answered incorrectly",
+          "default": "Answered incorrectly."
+        },
+        {
+          "label": "CorrectAnswer",
+          "description": "@solution is a placeholder and will be replaced by the respective value.",
+          "default": "Correct answer: @solution"
+        },
+        {
+          "label": "Result screen shown",
+          "default": "Result screen is now shown."
+        },
+        {
+          "label": "Result screen hidden",
+          "default": "Result screen is now hidden."
+        },
+        {
+          "label": "Instruction to fill in the labels",
+          "default": "Fill in the labels on the image."
+        }
+      ]
+    }
+  ]
+}
