@@ -89,6 +89,15 @@
         display: inline-block;
         line-height: var(--button-symbol-size);
       }
+
+      &:focus-visible {
+        outline: none;
+
+        &::after {
+          border-color: transparent;
+          outline: 2px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
+        }
+      }
     }
   }
 
