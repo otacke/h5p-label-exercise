@@ -1,8 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Task description",
-      "default": "Fill in the labels on the image."
+      "label": "Task description"
     },
     {
       "label": "Label editor settings",
