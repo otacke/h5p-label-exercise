@@ -34,6 +34,7 @@
     "type": "group",
     "label": "Label editor settings",
     "importance": "high",
+    "widget": "labelExercise",
     "fields": [
       {
         "name": "labels",
@@ -86,6 +87,7 @@
               "type": "group",
               "label": "Telemetry",
               "importance": "low",
+              "widget": "none",
               "fields": [
                 {
                   "name": "x",
