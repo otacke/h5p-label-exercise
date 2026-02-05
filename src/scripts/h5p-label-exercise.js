@@ -26,9 +26,6 @@ export default class LabelExercise extends H5P.Question {
   constructor(params, contentId, extras = {}) {
     super('label-exercise', { theme: isThemingSupported() });
 
-    // TODO: Translations
-    // TODO: Icon
-
     try {
       addMixins(LabelExercise, [QuestionTypeContract, XAPI]);
     }
