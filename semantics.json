@@ -204,6 +204,14 @@
         ]
       },
       {
+        "name": "caseSensitive",
+        "importance": "low",
+        "type": "boolean",
+        "default": true,
+        "label": "Case sensitive",
+        "description": "Makes sure the user input has to be exactly the same as the answer."
+      },
+      {
         "name": "enableSolutionsButton",
         "type": "boolean",
         "label": "Enable \"Show Solution\" button",
@@ -228,7 +236,7 @@
     "importance": "low",
     "common": true,
     "fields": [
-{
+      {
         "name": "check",
         "type": "text",
         "label": "\"Check\" button label",

@@ -27,6 +27,7 @@ export default class LabelArea {
           position: index + 1,
           total: labelsLength,
           dictionary: this.params.dictionary,
+          caseSensitive: this.params.caseSensitive,
         },
         {
           onInteracted: () => {

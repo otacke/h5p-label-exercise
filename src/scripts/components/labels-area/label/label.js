@@ -179,7 +179,14 @@ export default class Label {
    * @returns {number} Current score.
    */
   getScore() {
-    return this.solutions.includes(this.getAnswer()) ? 1 : 0;
+    if (this.params.caseSensitive) {
+      return this.solutions.includes(this.getAnswer()) ? 1 : 0;
+    }
+
+    const normalizedUserAnswer = this.getAnswer().toLowerCase();
+    const normalizedSolutions = this.solutions.map((solution) => solution.toLowerCase());
+
+    return normalizedSolutions.includes(normalizedUserAnswer) ? 1 : 0;
   }
 
   /**

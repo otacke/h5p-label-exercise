@@ -47,7 +47,7 @@
       "label": "Hintergrundbild",
       "description": "Wähle das Bild aus, das als Hintergrund verwendet werden soll."
     },
-{
+    {
       "label": "Gesamtrückmeldung",
       "fields": [
         {
@@ -88,6 +88,10 @@
               "label": "Immer Hotspots verwenden"
             }
           ]
+        },
+        {
+          "label": "Auf Groß-/Kleinschreibung achten",
+          "description": "Stellt sicher, dass die Lösung exakt der Vorgabe entsprechen muss."
         },
         {
           "label": "\"Lösung anzeigen\" ermöglichen"

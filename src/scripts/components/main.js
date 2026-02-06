@@ -73,6 +73,7 @@ export default class Main {
         introductionId: this.params.introductionId,
         dictionary: this.params.dictionary,
         hotspotDisplay: this.params.behaviour.hotspotDisplay,
+        caseSensitive: this.params.behaviour.caseSensitive,
       },
       {
         onInteracted: () => {

@@ -76,7 +76,9 @@ export default class XAPI {
       .map((label) => splitSolutionString(label.solutions)[0])
       .join('[,]');
 
-    definition.correctResponsesPattern = [`{case_matters=true}${firstSolutions}`];
+    const caseMattersPrefix = `{case_matters=${this.params.behaviour.caseSensitive.toString()}}`;
+
+    definition.correctResponsesPattern = [`${caseMattersPrefix}${firstSolutions}`];
     definition.extensions = definition.extensions || {};
     definition.extensions['https://h5p.org/x-api/alternatives'] =
       this.params.labelEditor.labels.map((label) => splitSolutionString(label.solutions));
