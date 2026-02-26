@@ -280,7 +280,9 @@ export default class LabelExercise extends H5P.Question {
 
     this.addQuestionButtons();
 
-    this.setCurrentState(this.previousState);
+    if (Object.keys(this.previousState).length) {
+      this.setCurrentState(this.previousState);
+    }
   }
 
   /**
