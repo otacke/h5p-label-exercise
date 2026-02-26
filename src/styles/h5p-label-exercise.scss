@@ -25,6 +25,11 @@
 }
 
 .h5p-question-introduction {
+  margin: var(--h5p-theme-spacing-m, 1rem);
+  font-size: var(--h5p-theme-font-size-xl, 1.25rem);
+  color: var(--h5p-theme-text-primary, #101729);
+  font-weight: 600;
+
   & .task-description {
     padding-right: var(--fullscreen-button-size);
 
