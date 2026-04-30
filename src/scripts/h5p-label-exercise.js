@@ -134,7 +134,7 @@ export default class LabelExercise extends H5P.Question {
     const sanitizedParams = extend({}, params);
 
     sanitizedParams.labelEditor.labels = sanitizedParams.labelEditor.labels.filter((label, index) => {
-      const hasLabel = typeof label.solutions === 'string';
+      const hasLabel = typeof label.solutions === 'string' && label.solutions.trim() !== '';
       if (!hasLabel) {
         console.warn(`Label ${index + 1} is missing a solution.`);
       }
