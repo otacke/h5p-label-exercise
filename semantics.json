@@ -42,7 +42,6 @@
         "label": "Labels",
         "importance": "high",
         "entity": "label",
-        "min": 1,
         "field": {
           "name": "label",
           "type": "group",
