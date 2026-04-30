@@ -6,6 +6,10 @@
     width: 100%;
   }
 
+  &:not(:has(.h5p-label-exercise-background-image)) {
+    aspect-ratio: 16 / 9;
+  }
+
   &.display-none {
     display: none;
   }
