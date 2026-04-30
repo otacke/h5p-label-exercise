@@ -41,6 +41,7 @@
         "type": "list",
         "label": "Labels",
         "importance": "high",
+        "defaultNum": 0,
         "entity": "label",
         "field": {
           "name": "label",
