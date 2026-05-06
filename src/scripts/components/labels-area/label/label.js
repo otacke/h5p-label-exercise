@@ -28,6 +28,7 @@ export default class Label {
     this.dom.style.setProperty('--top', `${this.telemetry.getYAsString()}%`);
     this.dom.style.setProperty('--width', `${this.telemetry.getWidthAsString()}%`);
     this.dom.style.setProperty('--height', `${this.telemetry.getHeightAsString()}%`);
+    this.dom.style.setProperty('--z-index', this.params.zIndex ?? 0);
     this.dom.setAttribute('role', 'listitem');
   }
 

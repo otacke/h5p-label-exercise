@@ -50,6 +50,7 @@ export default class LabelExercise extends H5P.Question {
     this.params = extend(defaults, params);
 
     this.params = this.sanitizeParams(this.params);
+    this.params = this.bakeZIndexIntoLabelParams(this.params);
     this.params = this.sortLabelsByPosition(this.params); // Ensure labels tab order matches visual order
 
     this.contentId = contentId;
@@ -168,6 +169,21 @@ export default class LabelExercise extends H5P.Question {
     });
 
     return sanitizedParams;
+  }
+
+  /**
+   * Bake z-index into label params
+   * @param {object} params Parameters containing labels in specific order.
+   * @returns {object} Parameters with zIndex.
+   */
+  bakeZIndexIntoLabelParams(params) {
+    const updatedParams = extend({}, params);
+
+    updatedParams.labelEditor.labels = params.labelEditor.labels.map(
+      (label, index) => ({ ...label, zIndex: index }),
+    );
+
+    return updatedParams;
   }
 
   /**

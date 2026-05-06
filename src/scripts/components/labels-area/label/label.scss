@@ -4,6 +4,7 @@
   position: absolute;
   top: var(--top);
   width: var(--width);
+  z-index: var(--z-index);
 
   &:has(.h5p-advanced-text) {
     overflow: hidden;
