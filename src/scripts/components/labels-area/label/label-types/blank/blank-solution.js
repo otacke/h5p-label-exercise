@@ -1,4 +1,4 @@
-import './label-solution.scss';
+import './blank-solution.scss';
 
 /** @constant {Map<string, string>} ANCHOR_CLASSES Position classes for solution display. */
 const ANCHOR_CLASSES = new Map([
@@ -9,7 +9,7 @@ const ANCHOR_CLASSES = new Map([
 /**
  * Class representing label solution.
  */
-export default class LabelSolution {
+export default class BlankSolution {
   /**
    * Create instance of LabelSolution.
    * @param {object} [params] Parameters for label solution.

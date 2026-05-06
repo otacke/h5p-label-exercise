@@ -13,8 +13,29 @@
             "label": "Beschriftung",
             "fields": [
               {
+                "label": "Wähle den Typ",
+                "options": [
+                  {
+                    "label": "Eingabefeld"
+                  },
+                  {
+                    "label": "Auswahlfeld"
+                  },
+                  {
+                    "label": "Text"
+                  }
+                ]
+              },
+              {
+                "label": "Text"
+              },
+              {
                 "label": "Lösungen",
                 "description": "Gib die richtige(n) Lösung(en) für diese Beschriftung ein. Du kannst mehrere Lösungen eingeben, getrennt durch einen Schrägstrich (/). Wenn deine Lösung einen Schrägstrich enthalten soll, stelle ihm einen Backslash (\\/) voran."
+              },
+              {
+                "label": "Distraktoren",
+                "description": "Gib falsche Lösung(en) für diese Beschriftung ein. Du kannst mehrere Lösungen eingeben, getrennt durch einen Schrägstrich (/). Wenn deine Lösung einen Schrägstrich enthalten soll, stelle ihm einen Backslash (\\/) voran."
               },
               {
                 "label": "Hinweis",

@@ -13,8 +13,29 @@
             "label": "Label",
             "fields": [
               {
+                "label": "Choose type",
+                "options": [
+                  {
+                    "label": "Input field"
+                  },
+                  {
+                    "label": "Dropdown field"
+                  },
+                  {
+                    "label": "Text"
+                  }
+                ]
+              },
+              {
+                "label": "Text"
+              },
+              {
                 "label": "Solutions",
                 "description": "Enter the correct solution(s) for this label. You can enter multiple solutions separated by a forward slash(/). If your solution is supposed to contain a forward slash, prepend it with a backslash (\\/)."
+              },
+              {
+                "label": "Distractors",
+                "description": "Enter wrong solution(s) for this label. You can enter multiple solutions separated by a forward slash(/). If your solution is supposed to contain a forward slash, prepend it with a backslash (\\/)."
               },
               {
                 "label": "Hint",

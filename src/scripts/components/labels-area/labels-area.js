@@ -1,4 +1,5 @@
-import Label from './label/label.js';
+import LabelFactory from './label/label-factory.js';
+import { LABEL_TYPE } from '@services/constants.js';
 import { extend } from '@services/util.js';
 import './labels-area.scss';
 
@@ -9,6 +10,7 @@ export default class LabelArea {
    * @param {Array} params.labels Array of label parameters.
    * @param {string} params.introductionId ID for aria-labelledby attribute.
    * @param {object} params.dictionary Dictionary for label text.
+   * @param {string} params.contentId Content id.
    * @param {object} callbacks Callbacks.
    * @param {function} callbacks.onInteracted Called when user interacts with labels.
    */
@@ -21,14 +23,22 @@ export default class LabelArea {
 
     const labelsLength = this.params.labels.length;
     this.labels = this.params.labels.map((labelParams, index) => {
-      return new Label(
-        {
-          ...labelParams,
-          position: index + 1,
-          total: labelsLength,
-          dictionary: this.params.dictionary,
-          caseSensitive: this.params.caseSensitive,
-        },
+      const params = {
+        ...labelParams,
+        position: index + 1,
+        total: labelsLength,
+        dictionary: this.params.dictionary,
+      };
+
+      if (labelParams.type === LABEL_TYPE.BLANK) {
+        params.caseSensitive = this.params.caseSensitive;
+      }
+      else if (labelParams.type === LABEL_TYPE.TEXT) {
+        params.contentId = this.params.contentId;
+      }
+
+      return LabelFactory.produce(
+        params,
         {
           onInteracted: () => {
             this.callbacks.onInteracted();
@@ -87,7 +97,9 @@ export default class LabelArea {
    * @returns {boolean} True if at least one label has been answered.
    */
   getAnswerGiven() {
-    return this.labels.some((label) => label.getAnswerGiven());
+    return this.labels
+      .filter((label) => label.isExercise())
+      .some((label) => label.getAnswerGiven());
   }
 
   /**
@@ -95,7 +107,11 @@ export default class LabelArea {
    * @returns {object} Object containing labels state array.
    */
   getCurrentState() {
-    return { labels: this.labels.map((label) => label.getCurrentState()) };
+    return {
+      labels: this.labels
+        .filter((label) => label.isExercise())
+        .map((label) => label.getCurrentState()),
+    };
   }
 
   /**
@@ -111,7 +127,9 @@ export default class LabelArea {
    * @returns {object[]} Evaluation objects for each label.
    */
   getEvaluation() {
-    return this.labels.map((label) => label.getEvaluation());
+    return this.labels
+      .filter((label) => label.isExercise())
+      .map((label) => label.getEvaluation());
   }
 
   /**
@@ -119,15 +137,15 @@ export default class LabelArea {
    * @returns {number} Sum of all label max scores.
    */
   getMaxScore() {
-    return this.labels.reduce((maxScore, label) => {
-      return maxScore + label.getMaxScore();
-    }, 0);
+    return this.labels
+      .filter((label) => label.isExercise())
+      .reduce((maxScore, label) => maxScore + label.getMaxScore(), 0);
   }
 
   /**
    * Get label by its index.
    * @param {number} index Index of label.
-   * @returns {Label} Label at specified index.
+   * @returns {object} Label at specified index.
    */
   getLabelByIndex(index) {
     if (index < 0 || index >= this.labels.length) {
@@ -142,9 +160,9 @@ export default class LabelArea {
    * @returns {number} Sum of all label scores.
    */
   getScore() {
-    return this.labels.reduce((score, label) => {
-      return score + label.getScore();
-    }, 0);
+    return this.labels
+      .filter((label) => label.isExercise())
+      .reduce((score, label) => score + label.getScore(), 0);
   }
 
   /**
@@ -152,16 +170,20 @@ export default class LabelArea {
    * @returns {string} "Comma-joined" answers from all labels.
    */
   getXAPIResponse() {
-    return this.labels.map((label) => label.getAnswer()).join('[,]');
+    return this.labels
+      .filter((label) => label.isExercise())
+      .map((label) => label.getAnswer()).join('[,]');
   }
 
   /**
    * Hide evaluation feedback for all labels.
    */
   hideEvaluation() {
-    this.labels.forEach((label) => {
-      label.hideEvaluation();
-    });
+    this.labels
+      .filter((label) => label.isExercise())
+      .forEach((label) => {
+        label.hideEvaluation();
+      });
   }
 
   /**
@@ -170,6 +192,7 @@ export default class LabelArea {
   reclaimLabels() {
     const nodes = this.labels.map((label) => {
       label.toggleListItemRole(true);
+      label.toggleVisibility(false);
       return label.getDOM();
     });
 
@@ -181,9 +204,15 @@ export default class LabelArea {
    */
   reset() {
     this.labels.forEach((label) => {
-      label.reset();
+      label?.reset();
     });
     this.reclaimLabels();
+  }
+
+  resize() {
+    this.labels.forEach((label) => {
+      label.resize();
+    });
   }
 
   /**
@@ -213,25 +242,32 @@ export default class LabelArea {
    * Show evaluation feedback for all labels.
    */
   showEvaluation() {
-    this.labels.forEach((label) => {
-      label.showEvaluation();
-    });
+    this.labels
+      .filter((label) => label.isExercise())
+      .forEach((label) => {
+        label.showEvaluation();
+      });
   }
 
   /**
    * Show solutions for all labels.
    */
   showSolutions() {
-    this.labels.forEach((label) => {
-      label.showSolution();
-    });
+    this.labels
+      .filter((label) => label.isExercise())
+      .forEach((label) => {
+        label.showSolution();
+      });
   }
 
   /**
    * Toggle visibility of labels area.
    * @param {boolean} isVisible Whether area should be visible.
+   * @param {boolean} enforce Whether label's own goals will be ignored.
    */
-  toggleVisibility(isVisible) {
-    this.dom.classList.toggle('display-none', !isVisible);
+  toggleVisibility(isVisible, enforce) {
+    this.labels.forEach((label) => {
+      label.toggleVisibility(isVisible, enforce);
+    });
   }
 }

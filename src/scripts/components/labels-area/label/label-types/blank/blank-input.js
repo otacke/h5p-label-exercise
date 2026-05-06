@@ -1,5 +1,5 @@
 import { extend } from '@services/util.js';
-import './label-input.scss';
+import './blank-input.scss';
 
 export default class LabelInput {
   /**
@@ -48,11 +48,11 @@ export default class LabelInput {
    */
   buildDOM() {
     const dom = document.createElement('div');
-    dom.classList.add('h5p-label-exercise-label-input-wrapper');
+    dom.classList.add('h5p-label-exercise-blank-input-wrapper');
 
     const input = document.createElement('input');
     input.id = H5P.createUUID();
-    input.classList.add('h5p-label-exercise-label-input');
+    input.classList.add('h5p-label-exercise-blank-input');
     input.setAttribute('autocomplete', 'off');
     input.setAttribute('autocapitalize', 'off');
     input.setAttribute('spellcheck', 'false');

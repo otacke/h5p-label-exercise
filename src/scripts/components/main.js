@@ -4,6 +4,7 @@ import LabelsArea from '@components/labels-area/labels-area.js';
 import HotspotsArea from '@components/hotspots-area/hotspots-area.js';
 import ResultScreen from '@components/result-screen/result-screen.js';
 import OverlayDialog from './overlay-dialog.js';
+import { LABEL_TYPE } from '@services/constants.js';
 import { callOnceVisible, extend } from '@services/util.js';
 import './main.scss';
 
@@ -69,11 +70,14 @@ export default class Main {
     // Labels area
     this.labelsArea = new LabelsArea(
       {
+        contentId: this.params.contentId,
         labels: this.params.labels,
         introductionId: this.params.introductionId,
         dictionary: this.params.dictionary,
         hotspotDisplay: this.params.behaviour.hotspotDisplay,
         caseSensitive: this.params.behaviour.caseSensitive,
+        baseWidth: this.params.baseWidth,
+        baseFontSize: this.params.baseFontSize,
       },
       {
         onInteracted: () => {
@@ -90,7 +94,7 @@ export default class Main {
     // Hotspots area, alternative to labels on smaller screens
     this.hotspotsArea = new HotspotsArea(
       {
-        labels: this.params.labels,
+        labels: this.params.labels.filter((label) => label.type !== LABEL_TYPE.TEXT),
         introductionId: this.params.introductionId,
         dictionary: this.params.dictionary,
         hotspotDisplay: this.params.behaviour.hotspotDisplay,
@@ -137,7 +141,7 @@ export default class Main {
    * @param {number} index Index of clicked hotspot.
    */
   handleHotspotClicked(index) {
-    const total = this.params.labels.length;
+    const total = this.params.labels.filter((label) => label.type !== LABEL_TYPE.TEXT).length;
     const title = this.params.dictionary.get('l10n.labelXOfY')
       .replaceAll('@current', index + 1)
       .replaceAll('@total', total);
@@ -145,6 +149,7 @@ export default class Main {
 
     const label = this.labelsArea.getLabelByIndex(index);
     label.toggleListItemRole(false);
+    label.toggleVisibility(true);
     this.overlayDialog.setContent(label.getDOM());
 
     this.overlayDialog.show();
@@ -242,6 +247,18 @@ export default class Main {
 
     delete this.wasAnswerGiven;
     delete this.isShowingHotspots;
+  }
+
+  /**
+   * Resize.
+   */
+  resize() {
+    const baseFontFactor = this.dom.offsetWidth / this.params.baseWidth || 1;
+    const baseFontSize = this.params.baseFontSize * baseFontFactor;
+
+    this.dom.style.setProperty('--scaled-font-size', `${baseFontSize}px`);
+
+    this.labelsArea.resize();
   }
 
   /**

@@ -5,13 +5,11 @@
   top: var(--top);
   width: var(--width);
 
-  &.display-none {
-    display: none;
+  &:has(.h5p-advanced-text) {
+    overflow: hidden;
   }
 
-  &:has(.joubel-tip-container) {
-    .h5p-label-exercise-label-input {
-      padding-right: calc(var(--h5p-theme-spacing-l, 2rem) * 1.1);
-    }
+  &.display-none {
+    display: none;
   }
 }

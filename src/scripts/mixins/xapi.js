@@ -1,5 +1,6 @@
 import { DEFAULT_DESCRIPTION } from '@services/constants.js';
 import { extend, splitSolutionString } from '@services/util.js';
+import { LABEL_TYPE } from '@services/constants.js';
 
 /** @constant {string} XAPI_BLANK_PLACEHOLDER Placeholder for H5P's reporting library. */
 const XAPI_BLANK_PLACEHOLDER = '__________';
@@ -73,6 +74,7 @@ export default class XAPI {
      * uses the https://h5p.org/x-api/alternatives extension to send all alternatives.
      */
     const firstSolutions = this.params.labelEditor.labels
+      .filter((label) => label.type === LABEL_TYPE.BLANK || label.type === LABEL_TYPE.DROPDOWN)
       .map((label) => splitSolutionString(label.solutions)[0])
       .join('[,]');
 
@@ -81,7 +83,9 @@ export default class XAPI {
     definition.correctResponsesPattern = [`${caseMattersPrefix}${firstSolutions}`];
     definition.extensions = definition.extensions || {};
     definition.extensions['https://h5p.org/x-api/alternatives'] =
-      this.params.labelEditor.labels.map((label) => splitSolutionString(label.solutions));
+      this.params.labelEditor.labels
+        .filter((label) => label.type === LABEL_TYPE.BLANK || label.type === LABEL_TYPE.DROPDOWN)
+        .map((label) => splitSolutionString(label.solutions));
     definition.extensions['https://h5p.org/x-api/case-sensitivity'] = true;
 
     return definition;
@@ -107,6 +111,7 @@ export default class XAPI {
     const intro = `<p>${description}</p>`.replaceAll(/_{10,}/gi, '_________');
 
     const itemsString = this.params.labelEditor.labels
+      .filter((label) => label.type === LABEL_TYPE.BLANK || label.type === LABEL_TYPE.DROPDOWN)
       .map((label) => {
         const solution = splitSolutionString(label.solutions).join('/');
         return `<p>${solution}: ${XAPI_BLANK_PLACEHOLDER}</p>`;

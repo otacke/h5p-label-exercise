@@ -3,6 +3,7 @@ import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
 import { DEFAULT_LANGUAGE_TAG, VIEW_STATES } from '@services/constants.js';
 import Dictionary from '@services/dictionary.js';
+import { LABEL_TYPE } from '@services/constants.js';
 import { addMixins, extend } from '@services/util.js';
 import { getSemanticsDefaults, isThemingSupported } from '@services/util-h5p.js';
 import '@styles/h5p-label-exercise.scss';
@@ -12,6 +13,12 @@ import '@styles/h5p-label-exercise.scss';
  * Not using CSS container queries here as we need to react in JavaScript as well.
  */
 const SMALL_SCREEN_THRESHOLD_PX = 600;
+
+/** @constant {number} BASE_WIDTH_PX Base width for font size computation. */
+const BASE_WIDTH_PX = 640;
+
+/** @constant {number} BASE_FONT_SIZE_PX Base font size. */
+const BASE_FONT_SIZE_PX = 16;
 
 /** @constant {number} SHOW_FEEDBACK_DELAY_MS Delay in milliseconds to trigger extra resize after showing feedback. */
 const SHOW_FEEDBACK_DELAY_MS = 250;
@@ -81,6 +88,8 @@ export default class LabelExercise extends H5P.Question {
         labels: this.params.labelEditor.labels,
         fullscreenAllowed: this.isFullscreenAllowed,
         behaviour: this.params.behaviour,
+        baseWidth: BASE_WIDTH_PX,
+        baseFontSize: BASE_FONT_SIZE_PX,
       }, {
         onContentVisible: (container) => {
           this.handleContentVisible(container);
@@ -118,6 +127,8 @@ export default class LabelExercise extends H5P.Question {
           return;
         }
 
+        this.main.resize();
+
         // Not done with container queries as we also need to react in JS
         const isSmallScreen = this.container.offsetWidth < SMALL_SCREEN_THRESHOLD_PX;
         this.main.toggleHotspotVisibility(isSmallScreen);
@@ -134,17 +145,27 @@ export default class LabelExercise extends H5P.Question {
     const sanitizedParams = extend({}, params);
 
     sanitizedParams.labelEditor.labels = sanitizedParams.labelEditor.labels.filter((label, index) => {
-      const hasLabel = typeof label.solutions === 'string' && label.solutions.trim() !== '';
-      if (!hasLabel) {
+
+      const hasSolution = typeof label.solutions === 'string' && label.solutions.trim() !== '';
+      if ((label.type === LABEL_TYPE.BLANK || label.type === LABEL_TYPE.DROPDOWN) && !hasSolution) {
         console.warn(`Label ${index + 1} is missing a solution.`);
       }
 
-      const hasTelemetry = label.telemetry?.x && label.telemetry?.y && label.telemetry?.width;
+      const requiredTelemetryProps = ['x', 'y', 'width'];
+      if (label.type === LABEL_TYPE.TEXT) {
+        requiredTelemetryProps.push('height');
+      }
+
+      const hasTelemetry = requiredTelemetryProps.every((prop) => !!label.telemetry[prop]);
       if (!hasTelemetry) {
         console.warn(`Label ${index + 1} is missing telemetry data.`);
       }
 
-      return hasLabel && hasTelemetry;
+      return hasTelemetry && (
+        label.type === LABEL_TYPE.BLANK && hasSolution ||
+        label.type === LABEL_TYPE.DROPDOWN && hasSolution ||
+        label.type === LABEL_TYPE.TEXT
+      );
     });
 
     return sanitizedParams;
