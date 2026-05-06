@@ -17,6 +17,7 @@ H5PUpgrades['H5P.LabelExercise'] = (() => {
         if (Array.isArray(parameters?.labelEditor?.labels)) {
           parameters.labelEditor.labels = parameters.labelEditor.labels.map((label) => {
             label.type = 'blank';
+            return label;
           });
         }
 
