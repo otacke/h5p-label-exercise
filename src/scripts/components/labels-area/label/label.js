@@ -101,4 +101,20 @@ export default class Label {
   resize() {
     // Needs to be implemented if required
   }
+
+  /**
+   * Set current state.
+   * @param {object} state State.
+   */
+  setCurrentState(state) {
+    // Needs to be implemented if required
+  }
+
+  /**
+   * Get current state.
+   * @returns {object} state State.
+   */
+  getCurrentState(state) {
+    // Needs to be implemented if required
+  }
 }
