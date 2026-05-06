@@ -75,7 +75,8 @@
               "label": "Text",
               "options": [
                 "H5P.AdvancedText 1.1"
-              ]
+              ],
+              "optional": true
             },
             {
               "name": "solutions",
@@ -89,7 +90,8 @@
               "type": "text",
               "label": "Distractors",
               "description": "Enter wrong solution(s) for this label. You can enter multiple solutions separated by a forward slash(/). If your solution is supposed to contain a forward slash, prepend it with a backslash (\\/).",
-              "importance": "high"
+              "importance": "high",
+              "optional": true
             },
             {
               "name": "hint",
