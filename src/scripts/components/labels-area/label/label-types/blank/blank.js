@@ -1,9 +1,9 @@
-import BlankHint from './blank-hint.js';
-import BlankInput from './blank-input.js';
-import BlankSolution from './blank-solution.js';
 import Label from '@components/labels-area/label/label.js';
 import Telemetry from '@models/telemetry.js';
 import { extend, splitSolutionString } from '@services/util.js';
+import BlankHint from './blank-hint.js';
+import BlankInput from './blank-input.js';
+import BlankSolution from './blank-solution.js';
 import './blank.scss';
 
 /** @constant {number} VERTICAL_CENTER_PERCENTAGE Vertical center percentage for solution positioning. */
@@ -53,6 +53,10 @@ export default class Blank extends Label {
     }
   }
 
+  /**
+   * Build blank input component.
+   * @returns {BlankInput} Blank input instance.
+   */
   buildBlankInput() {
     return new BlankInput({
       position: this.params.position,
@@ -65,6 +69,10 @@ export default class Blank extends Label {
     });
   }
 
+  /**
+   * Build solution display component.
+   * @returns {BlankSolution} Blank solution instance.
+   */
   buildSolution() {
     const solutionPosition = this.telemetry.getY() > VERTICAL_CENTER_PERCENTAGE ? 'top' : 'bottom';
 
@@ -74,6 +82,10 @@ export default class Blank extends Label {
     });
   }
 
+  /**
+   * Build hint component.
+   * @returns {BlankHint} Blank hint instance.
+   */
   buildHint() {
     return new BlankHint({
       text: this.params.hint,
@@ -253,6 +265,6 @@ export default class Blank extends Label {
    * Resize.
    */
   resize() {
-    this.hint.ensureClosed();
+    this.hint?.ensureClosed();
   }
 }

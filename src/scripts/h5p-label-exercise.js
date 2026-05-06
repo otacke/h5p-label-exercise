@@ -1,9 +1,8 @@
 import Main from '@components/main.js';
 import QuestionTypeContract from '@mixins/question-type-contract.js';
 import XAPI from '@mixins/xapi.js';
-import { DEFAULT_LANGUAGE_TAG, VIEW_STATES } from '@services/constants.js';
+import { DEFAULT_LANGUAGE_TAG, LABEL_TYPE, VIEW_STATES } from '@services/constants.js';
 import Dictionary from '@services/dictionary.js';
-import { LABEL_TYPE } from '@services/constants.js';
 import { addMixins, extend } from '@services/util.js';
 import { getSemanticsDefaults, isThemingSupported } from '@services/util-h5p.js';
 import '@styles/h5p-label-exercise.scss';

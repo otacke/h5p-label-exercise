@@ -1,6 +1,6 @@
-import BlankHint from '../blank/blank-hint.js';
-import BlankSolution from '../blank/blank-solution.js';
 import Label from '@components/labels-area/label/label.js';
+import BlankHint from '@components/labels-area/label/label-types/blank/blank-hint.js';
+import BlankSolution from '@components/labels-area/label/label-types/blank/blank-solution.js';
 import { splitSolutionString } from '@services/util.js';
 import DropdownSelect from './dropdown-select.js';
 import './dropdown.scss';

@@ -1,9 +1,6 @@
-import BlankHint from './label-types/blank/blank-hint.js';
-import BlankInput from './label-types/blank/blank-input.js';
-import BlankSolution from './label-types/blank/blank-solution.js';
 import Telemetry from '@models/telemetry.js';
 import { LABEL_TYPE } from '@services/constants.js';
-import { extend, splitSolutionString } from '@services/util.js';
+import { extend } from '@services/util.js';
 import './label.scss';
 
 export default class Label {
@@ -34,10 +31,18 @@ export default class Label {
     this.dom.setAttribute('role', 'listitem');
   }
 
+  /**
+   * Get root DOM element for this label.
+   * @returns {HTMLElement} Label DOM element.
+   */
   getDOM() {
     return this.dom;
   }
 
+  /**
+   * Determine whether this label counts as an exercise.
+   * @returns {boolean} True if label is an exercise with a maximum score greater than zero.
+   */
   isExercise() {
     return typeof this.getMaxScore === 'function' && this.getMaxScore() > 0;
   }
@@ -55,6 +60,11 @@ export default class Label {
     }
   }
 
+  /**
+   * Toggle label visibility.
+   * @param {boolean} isVisible Whether label should be visible.
+   * @param {boolean} [enforce] If true, also toggles text labels.
+   */
   toggleVisibility(isVisible, enforce) {
     if (this.params.type === LABEL_TYPE.TEXT && !enforce) {
       return;
@@ -63,18 +73,30 @@ export default class Label {
     this.dom.classList.toggle('display-none', !isVisible);
   }
 
+  /**
+   * Disable label interaction.
+   */
   disable() {
     // Needs to be implemented if required
   }
 
+  /**
+   * Enable label interaction.
+   */
   enable() {
     // Needs to be implemented if required
   }
 
+  /**
+   * Reset label to initial state.
+   */
   reset() {
     // Needs to be implemented if required
   }
 
+  /**
+   * Resize label.
+   */
   resize() {
     // Needs to be implemented if required
   }

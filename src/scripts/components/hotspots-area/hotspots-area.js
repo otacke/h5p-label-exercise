@@ -1,5 +1,5 @@
-import Hotspot from './hotspot.js';
 import { extend } from '@services/util.js';
+import Hotspot from './hotspot.js';
 import './hotspots-area.scss';
 
 export default class HotspotsArea {

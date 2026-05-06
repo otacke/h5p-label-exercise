@@ -1,6 +1,6 @@
-import LabelFactory from './label/label-factory.js';
 import { LABEL_TYPE } from '@services/constants.js';
 import { extend } from '@services/util.js';
+import LabelFactory from './label/label-factory.js';
 import './labels-area.scss';
 
 export default class LabelArea {
@@ -209,6 +209,9 @@ export default class LabelArea {
     this.reclaimLabels();
   }
 
+  /**
+   * Resize all labels.
+   */
   resize() {
     this.labels.forEach((label) => {
       label.resize();

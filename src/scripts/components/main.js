@@ -3,9 +3,9 @@ import FullscreenButton from '@components/fullscreen-button.js';
 import LabelsArea from '@components/labels-area/labels-area.js';
 import HotspotsArea from '@components/hotspots-area/hotspots-area.js';
 import ResultScreen from '@components/result-screen/result-screen.js';
-import OverlayDialog from './overlay-dialog.js';
 import { LABEL_TYPE } from '@services/constants.js';
 import { callOnceVisible, extend } from '@services/util.js';
+import OverlayDialog from './overlay-dialog.js';
 import './main.scss';
 
 export default class Main {

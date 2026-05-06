@@ -1,6 +1,5 @@
-import { DEFAULT_DESCRIPTION } from '@services/constants.js';
+import { DEFAULT_DESCRIPTION, LABEL_TYPE } from '@services/constants.js';
 import { extend, splitSolutionString } from '@services/util.js';
-import { LABEL_TYPE } from '@services/constants.js';
 
 /** @constant {string} XAPI_BLANK_PLACEHOLDER Placeholder for H5P's reporting library. */
 const XAPI_BLANK_PLACEHOLDER = '__________';

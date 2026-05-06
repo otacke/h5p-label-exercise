@@ -97,6 +97,11 @@ function ResultScreen(params) {
   return resultScreen;
 }
 
+/**
+ * Create a list item element summarizing a single question result.
+ * @param {ResultQuestion} question Question result data.
+ * @returns {HTMLElement} List item element.
+ */
 const createQuestion = (question) => {
   const listItem = createElement('li', {
     classList: 'h5p-label-exercise-results-list-item',
