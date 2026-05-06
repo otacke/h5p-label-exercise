@@ -1,5 +1,5 @@
 import { extend } from '@services/util.js';
-import './blank-hint.scss';
+import './hint.scss';
 
 export default class BlankHint {
   /**

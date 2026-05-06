@@ -1,7 +1,7 @@
 import Label from '@components/labels-area/label/label.js';
+import Hint from '@components/labels-area/label/label-types/hint.js';
 import Telemetry from '@models/telemetry.js';
 import { extend, splitSolutionString } from '@services/util.js';
-import BlankHint from './blank-hint.js';
 import BlankInput from './blank-input.js';
 import BlankSolution from './blank-solution.js';
 import './blank.scss';
@@ -84,10 +84,10 @@ export default class Blank extends Label {
 
   /**
    * Build hint component.
-   * @returns {BlankHint} Blank hint instance.
+   * @returns {Hint} Hint instance.
    */
   buildHint() {
-    return new BlankHint({
+    return new Hint({
       text: this.params.hint,
       position: this.params.position,
       dictionary: this.params.dictionary,

@@ -1,5 +1,5 @@
 import Label from '@components/labels-area/label/label.js';
-import BlankHint from '@components/labels-area/label/label-types/blank/blank-hint.js';
+import Hint from '@components/labels-area/label/label-types/hint.js';
 import BlankSolution from '@components/labels-area/label/label-types/blank/blank-solution.js';
 import { splitSolutionString } from '@services/util.js';
 import DropdownSelect from './dropdown-select.js';
@@ -80,10 +80,10 @@ export default class Dropdown extends Label {
 
   /**
    * Build hint component.
-   * @returns {BlankHint} Hint instance.
+   * @returns {Hint} Hint instance.
    */
   buildHint() {
-    return new BlankHint({
+    return new Hint({
       text: this.params.hint,
       position: this.params.position,
       dictionary: this.params.dictionary,
