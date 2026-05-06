@@ -112,9 +112,8 @@ export default class Label {
 
   /**
    * Get current state.
-   * @returns {object} state State.
    */
-  getCurrentState(state) {
+  getCurrentState() {
     // Needs to be implemented if required
   }
 }
