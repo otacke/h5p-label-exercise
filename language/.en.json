@@ -219,9 +219,9 @@
           "default": "Close"
         },
         {
-          "label": "Label input X of Y",
+          "label": "Label X of Y",
           "description": "@current and @total are placeholders and will be replaced by the respective values.",
-          "default": "Label input @current of @total."
+          "default": "Label @current of @total."
         },
         {
           "label": "Hotspot X of Y",

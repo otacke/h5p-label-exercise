@@ -21,12 +21,16 @@ export default class LabelArea {
       onInteracted: () => {},
     }, callbacks);
 
-    const labelsLength = this.params.labels.length;
-    this.labels = this.params.labels.map((labelParams, index) => {
+    const total = this.params.labels.filter((p) => p.type !== LABEL_TYPE.TEXT).length;
+    let exerciseIndex = 0;
+    this.labels = this.params.labels.map((labelParams) => {
+      if (labelParams.type !== LABEL_TYPE.TEXT) {
+        exerciseIndex++;
+      }
       const params = {
         ...labelParams,
-        position: index + 1,
-        total: labelsLength,
+        position: exerciseIndex,
+        total,
         dictionary: this.params.dictionary,
       };
 
