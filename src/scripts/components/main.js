@@ -269,7 +269,7 @@ export default class Main {
     this.fullscreenButton?.toggleVisibility(!isVisible);
     this.background.toggleVisibility(!isVisible);
 
-    this.labelsArea.toggleVisibility(!isVisible && !this.isShowingHotspots);
+    this.labelsArea.toggleVisibility(!isVisible && !this.isShowingHotspots, true);
     this.hotspotsArea.toggleVisibility(!isVisible && this.isShowingHotspots);
 
     if (isVisible && this.overlayDialog.isShowing()) {
