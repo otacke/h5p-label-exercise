@@ -39,11 +39,11 @@ export default class Hotspot {
     const dom = document.createElement('li');
     dom.classList.add('h5p-label-exercise-hotspot-list-item');
 
-    const button = document.createElement('button');
-    button.classList.add('h5p-label-exercise-hotspot');
-    button.style.setProperty('--left', `${this.telemetry.getXAsString()}%`);
-    button.style.setProperty('--top', `${this.telemetry.getYAsString()}%`);
-    button.style.setProperty('--label-width', `${this.telemetry.getWidthAsString()}%`);
+    this.button = document.createElement('button');
+    this.button.classList.add('h5p-label-exercise-hotspot');
+    this.button.style.setProperty('--left', `${this.telemetry.getXAsString()}%`);
+    this.button.style.setProperty('--top', `${this.telemetry.getYAsString()}%`);
+    this.button.style.setProperty('--label-width', `${this.telemetry.getWidthAsString()}%`);
 
     // Assume that the thing that the label relates to is where there's more space next to the label.
     if (!this.hotspotAnchorPosition) {
@@ -51,13 +51,13 @@ export default class Hotspot {
       const spaceRight = 100 - (this.telemetry.getX() + this.telemetry.getWidth());
       this.hotspotAnchorPosition = spaceLeft > spaceRight ? 'left' : 'right';
     }
-    button.classList.add(HOTSPOT_ANCHOR_POSITIONS.get(this.hotspotAnchorPosition));
+    this.button.classList.add(HOTSPOT_ANCHOR_POSITIONS.get(this.hotspotAnchorPosition));
 
-    button.addEventListener('click', () => {
+    this.button.addEventListener('click', () => {
       this.callbacks.onClicked();
     });
 
-    dom.append(button);
+    dom.append(this.button);
 
     return dom;
   }
@@ -66,14 +66,14 @@ export default class Hotspot {
    * Disable hotspot.
    */
   disable() {
-    this.dom.disabled = true;
+    this.button.disabled = true;
   }
 
   /**
    * Enable hotspot.
    */
   enable() {
-    this.dom.disabled = false;
+    this.button.disabled = false;
   }
 
   /**

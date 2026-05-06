@@ -16,6 +16,10 @@
     white-space: nowrap;
     width: 100%;
 
+    &[aria-disabled="true"] {
+      cursor: default;
+    }
+
     &:focus-visible {
       box-shadow: 0 0 0.5rem 0 var(--h5p-theme-contrast-cta-white, #006FBF);
       border-color: var(--h5p-theme-contrast-cta-white, #006FBF);

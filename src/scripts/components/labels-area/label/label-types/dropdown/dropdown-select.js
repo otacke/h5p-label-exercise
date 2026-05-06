@@ -20,6 +20,7 @@ export default class DropdownSelect {
 
     this.wasAnswerGiven = false;
     this.previousState = '';
+    this.isDisabled = false;
 
     const { dom, select } = this.buildDOM();
     this.dom = dom;
@@ -57,6 +58,18 @@ export default class DropdownSelect {
       option.value = text;
       option.textContent = text;
       select.appendChild(option);
+    });
+
+    select.addEventListener('mousedown', (event) => {
+      if (this.isDisabled) {
+        event.preventDefault();
+      }
+    });
+
+    select.addEventListener('keydown', (event) => {
+      if (this.isDisabled && event.key !== 'Tab') {
+        event.preventDefault();
+      }
     });
 
     select.addEventListener('change', () => {
@@ -139,7 +152,7 @@ export default class DropdownSelect {
    * Disable select.
    */
   disable() {
-    this.select.disabled = true;
+    this.isDisabled = true;
     this.select.setAttribute('aria-disabled', 'true');
   }
 
@@ -147,7 +160,7 @@ export default class DropdownSelect {
    * Enable select.
    */
   enable() {
-    this.select.disabled = false;
+    this.isDisabled = false;
     this.select.setAttribute('aria-disabled', 'false');
   }
 

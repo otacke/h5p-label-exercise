@@ -58,6 +58,12 @@ export default class LabelInput {
     input.setAttribute('spellcheck', 'false');
     input.type = 'text';
 
+    input.addEventListener('mousedown', (event) => {
+      if (this.input.readOnly) {
+        event.preventDefault();
+      }
+    });
+
     input.addEventListener('input', () => {
       this.setAnswerGiven(true);
     });

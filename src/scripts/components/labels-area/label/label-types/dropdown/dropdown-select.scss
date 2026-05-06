@@ -25,7 +25,7 @@
       outline: 1px ridge var(--h5p-theme-contrast-cta-white, #006FBF);
     }
 
-    &:disabled {
+    &[aria-disabled="true"] {
       cursor: default;
     }
   }
