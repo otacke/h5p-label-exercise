@@ -2,7 +2,7 @@
   "title": "Label Exercise",
   "description": "Let your student put correct labels on an image",
   "majorVersion": 1,
-  "minorVersion": 2,
+  "minorVersion": 3,
   "patchVersion": 0,
   "runnable": 1,
   "author": "Oliver Tacke",
@@ -36,7 +36,7 @@
     {
       "machineName": "H5PEditor.LabelExercise",
       "majorVersion": 1,
-      "minorVersion": 1
+      "minorVersion": 2
     },
     {
       "machineName": "H5PEditor.RangeList",
