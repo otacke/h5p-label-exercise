@@ -100,8 +100,8 @@ export default class Main {
         hotspotDisplay: this.params.behaviour.hotspotDisplay,
       },
       {
-        onHotspotClicked: (index) => {
-          this.handleHotspotClicked(index);
+        onHotspotClicked: (originalIndex, nominalIndex) => {
+          this.handleHotspotClicked(originalIndex, nominalIndex);
         },
       },
     );
@@ -138,16 +138,17 @@ export default class Main {
 
   /**
    * Handle hotspot clicked.
-   * @param {number} index Index of clicked hotspot.
+   * @param {number} originalIndex Original index of clicked hotspot.
+   * @param {number} nominalIndex Nominal index of clicked hotspot.
    */
-  handleHotspotClicked(index) {
+  handleHotspotClicked(originalIndex, nominalIndex) {
     const total = this.params.labels.filter((label) => label.type !== LABEL_TYPE.TEXT).length;
     const title = this.params.dictionary.get('l10n.labelXOfY')
-      .replaceAll('@current', index + 1)
+      .replaceAll('@current', nominalIndex + 1)
       .replaceAll('@total', total);
     this.overlayDialog.setTitle(title);
 
-    const label = this.labelsArea.getLabelByIndex(index);
+    const label = this.labelsArea.getLabelByIndex(originalIndex);
     label.toggleListItemRole(false);
     label.toggleVisibility(true);
     this.overlayDialog.setContent(label.getDOM());

@@ -1,3 +1,4 @@
+import { LABEL_TYPE } from '@services/constants.js';
 import { extend } from '@services/util.js';
 import Hotspot from './hotspot.js';
 import './hotspots-area.scss';
@@ -26,7 +27,7 @@ export default class HotspotsArea {
         labelParams,
         {
           onClicked: () => {
-            this.callbacks.onHotspotClicked(index);
+            this.callbacks.onHotspotClicked(labelParams.zIndex, index);
           },
         },
       );
