@@ -79,6 +79,21 @@
               "optional": true
             },
             {
+              "name": "backgroundColor",
+              "type": "text",
+              "label": "Background color",
+              "description": "Choose a color to use as the background.",
+              "default": "rgba(255, 255, 255, 0)",
+              "widget": "colorSelector",
+              "spectrum": {
+                "showAlpha": true,
+                "showInput": true,
+                "showInitial": true,
+                "preferredFormat": "rgb"
+              },
+              "optional": true
+            },
+            {
               "name": "solutions",
               "type": "text",
               "label": "Solutions",

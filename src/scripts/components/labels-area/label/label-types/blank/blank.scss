@@ -1,9 +1,12 @@
 .h5p-label-exercise-label {
-  height: max-content;
   left: var(--left);
   position: absolute;
   top: var(--top);
   width: var(--width);
+
+  &:not:has(.h5p-advanced-text) {
+    height: max-content;
+  }
 
   &.display-none {
     display: none;

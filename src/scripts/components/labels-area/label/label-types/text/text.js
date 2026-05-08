@@ -13,6 +13,9 @@ export default class Text extends Label {
     super(params, callbacks);
 
     this.instancePlaceholder = document.createElement('div');
+    if (this.params.backgroundColor) {
+      this.instancePlaceholder.style.setProperty('--background-color', this.params.backgroundColor);
+    }
     this.dom.append(this.instancePlaceholder);
 
     this.updateInstance(params);

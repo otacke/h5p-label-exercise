@@ -30,6 +30,10 @@
                 "label": "Text"
               },
               {
+                "label": "Background color",
+                "description": "Choose a color to use as the background."
+              },
+              {
                 "label": "Solutions",
                 "description": "Enter the correct solution(s) for this label. You can enter multiple solutions separated by a forward slash(/). If your solution is supposed to contain a forward slash, prepend it with a backslash (\\/)."
               },

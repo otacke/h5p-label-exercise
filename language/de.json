@@ -30,6 +30,10 @@
                 "label": "Text"
               },
               {
+                "label": "Hintergrundfarbe",
+                "description": "Wähle eine Farbe als Hintergrund."
+              },
+              {
                 "label": "Lösungen",
                 "description": "Gib die richtige(n) Lösung(en) für diese Beschriftung ein. Du kannst mehrere Lösungen eingeben, getrennt durch einen Schrägstrich (/). Wenn deine Lösung einen Schrägstrich enthalten soll, stelle ihm einen Backslash (\\/) voran."
               },
