@@ -269,12 +269,20 @@ export default class LabelArea {
 
   /**
    * Toggle visibility of labels area.
-   * @param {boolean} isVisible Whether area should be visible.
-   * @param {boolean} enforce Whether label's own goals will be ignored.
+   * @param {boolean} isVisible Whether "hotspottable" labels should be visible.
+   * @param {boolean} isVisiblePermanentItems Whether permanent items should be visible regardless of isVisible.
    */
-  toggleVisibility(isVisible, enforce) {
+  toggleVisibility(isVisible, isVisiblePermanentItems) {
+    if (!isVisiblePermanentItems) {
+      isVisiblePermanentItems = isVisible;
+    }
     this.labels.forEach((label) => {
-      label.toggleVisibility(isVisible, enforce);
+      if (label.getType() === LABEL_TYPE.TEXT) {
+        label.toggleVisibility(isVisiblePermanentItems);
+        return;
+      }
+
+      label.toggleVisibility(isVisible);
     });
   }
 }

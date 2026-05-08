@@ -88,7 +88,7 @@ export default class Main {
     dom.append(this.labelsArea.getDOM());
 
     if (this.params.behaviour.hotspotDisplay === 'always') {
-      this.labelsArea.toggleVisibility(false);
+      this.labelsArea.toggleVisibility(false, true);
     }
 
     // Hotspots area, alternative to labels on smaller screens
@@ -269,7 +269,7 @@ export default class Main {
     this.fullscreenButton?.toggleVisibility(!isVisible);
     this.background.toggleVisibility(!isVisible);
 
-    this.labelsArea.toggleVisibility(!isVisible && !this.isShowingHotspots, true);
+    this.labelsArea.toggleVisibility(!isVisible && !this.isShowingHotspots, !isVisible);
     this.hotspotsArea.toggleVisibility(!isVisible && this.isShowingHotspots);
 
     if (isVisible && this.overlayDialog.isShowing()) {
@@ -307,7 +307,7 @@ export default class Main {
     }
     this.isShowingHotspots = showHotspots;
 
-    this.labelsArea.toggleVisibility(!this.isShowingHotspots);
+    this.labelsArea.toggleVisibility(!this.isShowingHotspots, true);
     this.hotspotsArea.toggleVisibility(this.isShowingHotspots);
 
     if (this.overlayDialog.isShowing()) {

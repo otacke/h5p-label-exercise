@@ -41,6 +41,14 @@ export default class Label {
   }
 
   /**
+   * Get type of this label.
+   * @returns {string} Label type.
+   */
+  getType() {
+    return this.params.type;
+  }
+
+  /**
    * Determine whether this label counts as an exercise.
    * @returns {boolean} True if label is an exercise with a maximum score greater than zero.
    */
@@ -64,13 +72,8 @@ export default class Label {
   /**
    * Toggle label visibility.
    * @param {boolean} isVisible Whether label should be visible.
-   * @param {boolean} [enforce] If true, also toggles text labels.
    */
-  toggleVisibility(isVisible, enforce) {
-    if (this.params.type === LABEL_TYPE.TEXT && !enforce) {
-      return;
-    }
-
+  toggleVisibility(isVisible) {
     this.dom.classList.toggle('display-none', !isVisible);
   }
 
