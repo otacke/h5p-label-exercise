@@ -1,6 +1,6 @@
 {
   "name": "h5p-label-exercise",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Let your student put correct labels on an image.",
   "private": true,
   "scripts": {
