@@ -137,6 +137,14 @@ export default class LabelExercise extends H5P.Question {
   }
 
   /**
+   * Workaround for H5P core mutating prototype to inject its isRoot, but ES6 inheritance here.
+   * @returns {boolean} True, if content type is root. Else false.
+   */
+  isRoot() {
+    return !!this.extras.standalone;
+  }
+
+  /**
    * Sanitize parameters.
    * @param {object} params Parameters to be sanitized.
    * @returns {object} Sanitized parameters.
@@ -334,7 +342,7 @@ export default class LabelExercise extends H5P.Question {
       this.params.behaviour.enableCheckButton,
       { 'aria-label': this.dictionary.get('a11y.check') },
       {
-        contentData: this.contentData,
+        contentData: this.extras,
         textIfSubmitting: this.dictionary.get('l10n.submit'),
         icon: 'check',
       },
