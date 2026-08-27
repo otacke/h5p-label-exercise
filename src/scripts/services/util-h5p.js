@@ -1,31 +1,6 @@
 import semantics from '@root/semantics.json';
 
 /**
- * Get default value for a single field.
- * @param {object} field Field object.
- * @returns {object|undefined} Default value or undefined.
- */
-const getFieldDefault = (field) => {
-  if (typeof field.name !== 'string') {
-    return;
-  }
-
-  if (typeof field.default !== 'undefined') {
-    return field.default;
-  }
-
-  if (field.type === 'list') {
-    return [];
-  }
-
-  if (field.type === 'group' && field.fields) {
-    return getSemanticsDefaults(field.fields);
-  }
-
-  return;
-};
-
-/**
  * Get default values from semantics fields.
  * @param {object[]} start Start semantics field.
  * @returns {object} Default values from semantics.
@@ -45,23 +20,17 @@ export const getSemanticsDefaults = (start = semantics) => {
     if (typeof entry.default !== 'undefined') {
       defaults[entry.name] = entry.default;
     }
-
     if (entry.type === 'list') {
       defaults[entry.name] = []; // Does not set defaults within list items!
     }
     else if (entry.type === 'group' && entry.fields) {
-      // Odd behavior of groups with just one field
-      if (entry.fields.length > 1) {
-        const groupDefaults = getSemanticsDefaults(entry.fields);
-        if (Object.keys(groupDefaults).length) {
-          defaults[entry.name] = groupDefaults;
-        }
+      const groupDefaults = getSemanticsDefaults(entry.fields);
+      // Workaround for stupid H5P core behavior treating groups with one child as the child itself
+      if (Object.keys(groupDefaults).length === 1) {
+        defaults[entry.name] = Object.values(groupDefaults)[0];
       }
-      else {
-        const fieldDefault = getFieldDefault(entry.fields[0]);
-        if (fieldDefault !== undefined) {
-          defaults[entry.name] = fieldDefault;
-        }
+      else if (Object.keys(groupDefaults).length > 1) {
+        defaults[entry.name] = groupDefaults;
       }
     }
   });
